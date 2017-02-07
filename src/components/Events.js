@@ -5,7 +5,7 @@ export default class Events extends Component {
   componentWillMount() {
     httpGet("http://api.itboost.org:82/app_dev.php/api/events")
       .then(
-        response => {Events.events = response; console.log(response)},
+        response => console.log(response),
         //onEventsResived(response),
         error => console.log(error)
       );
