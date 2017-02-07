@@ -7,12 +7,14 @@ import { Link } from 'react-router'
 
 class App extends Component {
   render() {
-    const { onEventsResived } = this.props.pageActions;
     return (
       <div className='container'>
         <ul>
+          <li><Link to='/home'>Home</Link></li>
           <li><Link to='/events'>Events</Link></li>
+          <li><Link to='/events_full'>Events Full</Link></li>
         </ul>
+        {this.props.children}
       </div>
     );
   }

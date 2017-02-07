@@ -6,7 +6,7 @@ export function httpGet(url) {
     xhr.open('GET', url, true);
 
     xhr.onload = function() {
-      if (this.status == 200) {
+      if (this.status === 200) {
         resolve(this.response);
       } else {
         var error = new Error(this.statusText);

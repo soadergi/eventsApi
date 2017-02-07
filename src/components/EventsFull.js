@@ -14,8 +14,16 @@ export default class Events extends Component {
   render() {
     return (
       <div className='events'>
-        <div>Раздел /events</div>
+        <div>Раздел /eventsFull</div>
       </div>
     )
+  }
+}
+
+import { GET_ALL_EVENTS } from '../constants/index'
+export function onEventsResived(response) {
+  return {
+    type: GET_ALL_EVENTS,
+    payload: response
   }
 }
