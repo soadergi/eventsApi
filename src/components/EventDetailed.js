@@ -19,7 +19,7 @@ class Event extends Component {
 }
 
 function mapStateToProps(state) {
-    return { event: state.items }
+    return { event: state.changeStore.items }
 }
 
 export default connect(

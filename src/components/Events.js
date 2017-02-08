@@ -29,7 +29,7 @@ class Events extends Component {
 }
 
 function mapStateToProps(state) {
-  return { allEvents: state }
+  return { allEvents: state.changeStore }
 }
 
 export default connect(
