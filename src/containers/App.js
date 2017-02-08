@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import './App.css'
+import { httpGet } from '../helpers/helperFunctions'
 import { bindActionCreators } from 'redux'
 import * as pageActions from '../actions/PageActions'
-import { Link } from 'react-router'
 
 class App extends Component {
+  componentWillMount() {
+    httpGet("http://api.itboost.org:82/app_dev.php/api/events")
+    .then(
+      response => {
+        const { onEventsResived } = this.props.pageActions;
+        onEventsResived(JSON.parse(response));
+      },
+      error => console.log(error)
+    );
+  }
   render() {
     return (
       <div className='container'>
         <ul>
-          <li><Link to='/home'>Home</Link></li>
+          <li><Link to='/'>Home</Link></li>
           <li><Link to='/events'>Events</Link></li>
-          <li><Link to='/events_full'>Events Full</Link></li>
         </ul>
         {this.props.children}
       </div>
@@ -21,7 +30,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { allEvents: state }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {

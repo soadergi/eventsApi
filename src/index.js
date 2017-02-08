@@ -1,26 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import App from './containers/App';
-import configureStore from './store/configureStore';
-import Home from './components/Home'
-import Events from './components/Events'
-import EventsFull from './components/EventsFull'
-import NotFound from './components/NotFound'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
+import configureStore from './store/configureStore'
+import { routes } from './routes'
 
 const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={browserHistory}>
-			<Route path='/' component={App}>
-				<IndexRoute component={Home} />
-				<Route path='events' component={Events} />
-				<Route path='events_full' component={EventsFull} />
-			</Route>
-			<Route path='*' component={NotFound} />
-		</Router>
+		<Router history={browserHistory} routes={routes} />
 	</Provider>,
 	document.getElementById('root')
 );
