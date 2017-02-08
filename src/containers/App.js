@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { httpGet } from '../helpers/helperFunctions'
 import { bindActionCreators } from 'redux'
 import * as pageActions from '../actions/PageActions'
 
 class App extends Component {
   componentWillMount() {
-    httpGet("http://api.itboost.org:82/app_dev.php/api/events")
-    .then(
-      response => {
-        const { onEventsResived } = this.props.pageActions;
-        onEventsResived(JSON.parse(response));
-      },
-      error => console.log(error)
-    );
+    fetch('http://api.itboost.org:82/app_dev.php/api/events')
+      .then( response => {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+          response.json().then( data => {
+            const { onEventsResived } = this.props.pageActions;
+            onEventsResived(data);
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error', err);
+      });
   }
   render() {
     return (
