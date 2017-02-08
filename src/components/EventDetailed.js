@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class Event extends Component {
   render() {
-    Event.eventId = this.props.params.id;
     return (
       <div className='events'>
         <div>Раздел /EventDetailed</div>
