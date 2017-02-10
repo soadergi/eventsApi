@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class Events extends Component {
   render() {
@@ -29,7 +29,7 @@ class Events extends Component {
 }
 
 function mapStateToProps(state) {
-  return { allEvents: state.changeStore }
+  return { allEvents: state.events }
 }
 
 export default connect(

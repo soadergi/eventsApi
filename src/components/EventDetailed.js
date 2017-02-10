@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Event extends Component {
   render() {
@@ -19,7 +19,7 @@ class Event extends Component {
 }
 
 function mapStateToProps(state) {
-    return { event: state.changeStore.items }
+    return { event: state.events.items }
 }
 
 export default connect(

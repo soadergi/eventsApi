@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as pageActions from '../actions/PageActions'
+import React, { Component } from 'react';
+import './App.css';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as pageActions from '../actions/PageActions';
 
 class App extends Component {
   componentWillMount() {
-    fetch('http://api.itboost.org:82/app_dev.php/api/events')
+    fetch('http://api.itboost.org:82/app_dev.php/api/events', {method:"GET"})
       .then( response => {
           if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
@@ -27,8 +28,8 @@ class App extends Component {
     return (
       <div className='container'>
         <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/events'>Events</Link></li>
+          <li><Link to='/' activeClassName="active">Home</Link></li>
+          <li><Link to='/events' activeClassName="active">Events</Link></li>
         </ul>
         {this.props.children}
       </div>

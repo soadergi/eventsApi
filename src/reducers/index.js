@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
-import changeStore from './app'
-import changeFormStore from './forms'
+import { combineReducers } from 'redux';
+import changeStore from './app';
+import { reducer as formReducer } from 'redux-form';
 
-export default combineReducers({
-  changeStore,
-  changeFormStore
-})
+const reducers = {
+  events: changeStore,
+  form: formReducer
+}
+
+export default combineReducers(reducers)
