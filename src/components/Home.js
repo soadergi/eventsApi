@@ -20,8 +20,6 @@ class Home extends Component {
         return (
           <div>
             <h3>Please, sign in</h3>
-            <h4>username: soadergi@gmail.com</h4>
-            <h4>password: 54321q</h4>
             <RegistrationForm
               onUserRegistration={this.props.formActions.onUserRegistration}
               />

@@ -27,9 +27,9 @@ class RegistrationForm extends Component{
     return(
       <form onSubmit={handleSubmit(onSubmit)}>
         <Field name='_username' component='input'
-          type='text' placeholder='Username' required/><br/>
+          type='text' placeholder='Username' required/><br/><br/>
         <Field name='_password' component='input'
-          type='text' placeholder='Password' required/><br/>
+          type='text' placeholder='Password' required/><br/><br/>
         <button type='submit'>Submit</button>
       </form>
     )
@@ -37,7 +37,11 @@ class RegistrationForm extends Component{
 }
 
 RegistrationForm = reduxForm({
-  form: 'RegistrationForm'
+  form: 'RegistrationForm',
+  initialValues: {
+    _username: 'soadergi@gmail.com',
+    _password: '54321q'
+  }
 })(RegistrationForm);
 
 export default RegistrationForm;
