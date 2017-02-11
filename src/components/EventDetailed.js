@@ -15,6 +15,7 @@ class Event extends Component {
           {' '+event[params.id-1].createdBy.firstname}
           {' '+event[params.id-1].createdBy.lastname}
         </div>
+        <img height="200" width="200" src='http://api.itboost.org:82/uploads/gallery/584ef8302d3f9.jpeg' alt='planet'/>
       </div>
     )
   }

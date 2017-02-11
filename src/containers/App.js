@@ -7,8 +7,9 @@ import * as pageActions from '../actions/PageActions';
 
 class App extends Component {
   componentWillMount() {
+    const token = this.props.token;
     fetch('http://api.itboost.org:82/app_dev.php/api/events',
-      {method:"GET"})
+      {method:"GET", headers:{Authorization:'Bearer '+token}})
     .then( response => {
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: '+
@@ -38,7 +39,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {token: state.token}
 }
 
 function mapDispatchToProps(dispatch) {
