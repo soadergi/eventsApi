@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import changeStore from './app';
+import eventsReducer from './app';
+import addToken from './form';
 import { reducer as formReducer } from 'redux-form';
 
 const reducers = {
-  events: changeStore,
-  form: formReducer
+  events: eventsReducer,
+  form: formReducer,
+  token: addToken
 }
 
 export default combineReducers(reducers)

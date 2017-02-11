@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as formActions from '../actions/FormActions';
+import { bindActionCreators } from 'redux';
 import RegistrationForm from '../forms/RegistrationForm';
-import * as formActions from '../actions/FormActions'
-import { bindActionCreators } from 'redux'
 
 class Home extends Component {
   render() {
-    function handleSubmit(event) {
-      // values.preventDefault();
-      // console.log(values)
-    }
-
+    const Registration = (token) => {
+      if (token.length) {
+        return (
+          <div>
+            <h2>Wellcome</h2>
+            <span>Your token:<br/><br/>
+              {token}
+            </span>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <h3>Please, sign in</h3>
+            <h4>username: soadergi@gmail.com</h4>
+            <h4>password: 54321q</h4>
+            <RegistrationForm
+              onUserRegistration={this.props.formActions.onUserRegistration}
+              />
+          </div>
+        )
+      }
+    };
     return (
       <div className='home'>
         <h3>Раздел /home</h3>
-        <h2>Добро пожаловать</h2>
-        <RegistrationForm
-          handleSubmit={handleSubmit}
-          onUserRegistration={this.props.formActions.onUserRegistration}
-        />
-        {console.log(this.props.form)}
+        {Registration(this.props.token)}
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {form: state.form}
+  return {
+    token: state.token
+  }
 }
 
 function mapDispatchToProps(dispatch) {

@@ -7,22 +7,22 @@ import * as pageActions from '../actions/PageActions';
 
 class App extends Component {
   componentWillMount() {
-    fetch('http://api.itboost.org:82/app_dev.php/api/events', {method:"GET"})
-      .then( response => {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
-          }
-          response.json().then( data => {
-            const { onEventsResived } = this.props.pageActions;
-            onEventsResived(data);
-          });
-        }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error', err);
+    fetch('http://api.itboost.org:82/app_dev.php/api/events',
+      {method:"GET"})
+    .then( response => {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: '+
+        response.status);
+        return;
+      }
+      response.json().then( data => {
+        const { onEventsResived } = this.props.pageActions;
+        onEventsResived(data);
       });
+    })
+    .catch(function(err) {
+      console.log('Fetch Error', err);
+    });
   }
   render() {
     return (

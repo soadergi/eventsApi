@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 
 class Event extends Component {
   render() {
+    let event = this.props.event;
+    let params = this.props.params;
     return (
       <div className='events'>
         <div>Раздел /EventDetailed</div>
-        <div>Название мероприятия: {this.props.event[this.props.params.id-1].name}</div>
-        <div>Дата начала мероприятия: {this.props.event[this.props.params.id-1].eventStartDate}</div>
-        <div>Место проведения мероприятия: {this.props.event[this.props.params.id-1].locations[0].place}</div>
+        <div>Название мероприятия: {event[params.id-1].name}</div>
+        <div>Дата начала мероприятия: {event[params.id-1].eventStartDate}</div>
+        <div>Место проведения мероприятия: {event[params.id-1].locations[0].place}</div>
         <div>Организатор:
-          {' '+this.props.event[this.props.params.id-1].createdBy.firstname}
-          {' '+this.props.event[this.props.params.id-1].createdBy.lastname}
+          {' '+event[params.id-1].createdBy.firstname}
+          {' '+event[params.id-1].createdBy.lastname}
         </div>
       </div>
     )
